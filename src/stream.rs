@@ -411,9 +411,9 @@ pub(crate) fn connect_host(unit: &Unit, hostname: &str, port: u16) -> Result<Tcp
                 proto.unwrap(),
             )
         } else if let Some(timeout) = timeout {
-            TcpStream::connect_timeout(&sock_addr, timeout)
+            unit.connector().connect_timeout(&sock_addr, timeout)
         } else {
-            TcpStream::connect(&sock_addr)
+            unit.connector().connect(&sock_addr)
         };
 
         if let Ok(stream) = stream {

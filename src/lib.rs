@@ -325,6 +325,7 @@
 
 mod agent;
 mod body;
+mod connect;
 mod error;
 mod header;
 mod middleware;
@@ -389,6 +390,7 @@ mod testserver;
 pub use crate::agent::Agent;
 pub use crate::agent::AgentBuilder;
 pub use crate::agent::RedirectAuthHeaders;
+pub use crate::connect::Connector;
 pub use crate::error::{Error, ErrorKind, OrAnyStatus, Transport};
 pub use crate::header::Header;
 pub use crate::middleware::{Middleware, MiddlewareNext};

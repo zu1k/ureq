@@ -382,6 +382,18 @@ impl Request {
         self
     }
 
+    pub fn query_vec(mut self, queries: Vec<(&str, &str)>) -> Self {
+        if let Ok(mut url) = self.parse_url() {
+            for (param, value) in queries {
+                url.query_pairs_mut().append_pair(param, value);
+            }
+
+            // replace url
+            self.url = url.to_string();
+        }
+        self
+    }
+
     /// Returns the value of the request method. Something like `GET`, `POST`, `PUT` etc.
     ///
     /// ```
